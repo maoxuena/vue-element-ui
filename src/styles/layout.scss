@@ -1,0 +1,156 @@
+.app-wrapper {
+  min-height: 100%;
+  transition: padding-left 0.3s;
+  background-color: #f0f2f5;
+
+  .sidebar-container {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    background-color: #001529;
+    box-shadow: 2px 0 8px 0 rgba(29, 35, 41, 0.05);
+    transition: all 0.3s;
+
+    .scrollbar-wrapper {
+      overflow-x: hidden !important;
+
+      .svg-icon {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  .main-container {
+    height: 100%;
+    position: relative;
+
+    .header-container {
+      background-color: #fff;
+      box-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.12),
+        0 1.6px 3.6px rgba(0, 0, 0, 0.12);
+      height: 64px;
+    }
+
+    .icon-menu {
+      margin-left: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      position: absolute;
+      top: 22px;
+    }
+
+    .main-content {
+      padding: 30px;
+    }
+  }
+
+  &.hideSidebar {
+    padding-left: 60px;
+
+    .sidebar-container {
+      width: 60px;
+
+      .svg-icon {
+        margin-right: 3px;
+      }
+    }
+
+    .icon-menu {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+
+    .el-menu--collapse {
+      .el-submenu {
+        & > .el-submenu__title {
+          & > span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  &.openSidebar {
+    padding-left: 210px;
+
+    .sidebar-container {
+      width: 210px;
+    }
+
+    .icon-menu {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
+
+  &.light {
+    .sidebar-container {
+      background-color: #fff;
+    }
+  }
+
+  &.realDark {
+    background-color: #30303d;
+
+    a:not(:hover) {
+      color: #848a91 !important;
+    }
+
+    .main-container {
+      .header-container {
+        background-color: #23232e;
+      }
+
+      .icon-menu {
+        color: #fff;
+      }
+
+      .el-card {
+        background-color: #23232e;
+        color: #ffffff;
+        border-color: #30303d;
+      }
+    }
+  }
+}
+
+.fixedHeader {
+  .main-container {
+    padding-top: 64px;
+  }
+
+  .header-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    transition: width 0.3s;
+  }
+
+  &.openSidebar {
+    .header-container {
+      width: calc(100% - 210px);
+    }
+  }
+
+  &.hideSidebar {
+    .header-container {
+      width: calc(100% - 60px);
+    }
+  }
+}
+
+.menu-wrapper {
+  .svg-icon {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+}
