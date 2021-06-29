@@ -1,18 +1,18 @@
 import Vue from 'vue'
-import App from './App.vue'
 import Router from 'vue-router'
+import App from './App.vue'
 import router from './router'
 import store from './store'
-import './plugins/element.js'
-
-import 'element-ui/lib/theme-chalk/index.css'
-// import './styles/element-variables.scss'
-
 import 'normalize.css/normalize.css' // a modern alternative to CSS resets
-import '@/icons' // icon
+
+import './plugins/element.js'
+import './styles/element-variables.scss'
+
 import '@/styles/index.scss' // global css
 
+import '@/icons' // icon
 import './permission' // permission control
+import './utils/error-log' // error log
 
 import * as filters from '@/filters' // global filters
 
@@ -24,12 +24,12 @@ import * as filters from '@/filters' // global filters
  * Currently MockJs will be used in the production environment,
  * please remove it before going online! ! !
  */
-import { mockXHR } from '../mock'
-
 if (process.env.NODE_ENV === 'development') {
+  const { mockXHR } = require('../mock')
   mockXHR()
 }
 
+// 解决 Vue 重复点击相同路由报错
 const routerPush = Router.prototype.push
 Router.prototype.push = function push (location) {
   return routerPush.call(this, location).catch(error => error)

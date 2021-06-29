@@ -53,6 +53,7 @@ router.beforeEach(async (to, from, next) => {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')
           Message.error(error || 'Has Error')
+          // next(`/login?redirect=${to.path}`)
           next({
             path: '/login',
             query: { redirect: to.path }
@@ -68,6 +69,7 @@ router.beforeEach(async (to, from, next) => {
       next()
     } else {
       // 其他重定向至登录页
+      // next(`/login?redirect=${to.path}`)
       next({
         path: '/login',
         query: { redirect: to.path }

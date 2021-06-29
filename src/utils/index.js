@@ -182,6 +182,7 @@ export function formatTime (time, option) {
     )
   }
 }
+
 /**
  * 去抖函数
  * @param {Function} func

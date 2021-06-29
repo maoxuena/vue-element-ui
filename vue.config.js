@@ -7,7 +7,6 @@ function resolve (dir) {
 }
 
 const name = defaultSettings.title || 'Vue Element Demo' // page title
-
 const port = process.env.port || process.env.npm_config_port || 1991 // dev port
 
 module.exports = {
@@ -32,12 +31,14 @@ module.exports = {
         }
       }
     },
+    // 这里有before和after两种方式，但是有后端接口的话，改用after更好
     after: require('./mock/mock-server.js')
   },
   // webpack配置
   configureWebpack: {
     name: name, // 设置webpack的name配置项
     resolve: {
+      extensions: ['.js', '.vue', '.json'],
       alias: {// 别名配置
         '@': resolve('src')
       }
